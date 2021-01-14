@@ -35,7 +35,11 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/moment',
   ],
+  moment: {
+    locales: ['es-mx']
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -43,7 +47,25 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/firebase'
   ],
+
+  firebase: {
+    config: {
+      apiKey: "AIzaSyAwVJFfd-kP6wtLiLWxniCJ3S7NOiixLq4",
+      authDomain: "fir-2proyecto.firebaseapp.com",
+      databaseURL: "https://fir-2proyecto.firebaseio.com",
+      projectId: "firebase2proyecto",
+      storageBucket: "firebase2proyecto.appspot.com",
+      messagingSenderId: "300420461614",
+      appId: "1:300420461614:web:ac3d40201813aee93d9bbf"
+    },
+    services: {
+      firestore: true
+    }
+  },
+
+  
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
@@ -52,7 +74,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
