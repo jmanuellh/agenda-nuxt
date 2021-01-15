@@ -44,12 +44,12 @@
       </v-btn>
       <!-- <v-toolbar-title v-text="title" /> -->
       <v-spacer />
-      <!-- <v-btn
+      <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
       >
         <v-icon>mdi-menu</v-icon>
-      </v-btn> -->
+      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
@@ -63,13 +63,20 @@
       fixed
     >
       <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
+        <v-list-item @click="darkMode()">
+          <v-list-item-action class="list-item">
+            <span v-if="!$vuetify.theme.dark">
+              <v-icon light>
+                mdi-theme-light-dark
+              </v-icon>
+            </span>
+            <span v-else>
+              <v-icon dark>
+                mdi-theme-light-dark
+              </v-icon>
+            </span>
           </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
+          <v-list-item-title>Tema oscuro</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -86,13 +93,8 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Agenda',
           to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
         }
       ],
       miniVariant: false,
@@ -100,6 +102,17 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
+  },
+  methods: {
+    darkMode() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
   }
 }
 </script>
+
+<style scoped>
+.list-item {
+  cursor: pointer;
+}
+</style>

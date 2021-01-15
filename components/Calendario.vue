@@ -104,7 +104,7 @@
         v-calendar(
           locale="es"
           ref="calendar"
-          v-model="value"
+          v-model="focus"
           :weekdays="weekday"
           :type="type"
           :events="events"
@@ -113,6 +113,7 @@
           :event-color="getEventColor"
           :short-weekdays="false"
           @click:event="showEvent"
+          @click:date="viewDay"
         )
     v-menu(
       v-model="selectedOpen"
@@ -160,7 +161,7 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
-      value: '',
+      focus: '',
       weekday: [1, 2, 3, 4, 5, 6, 0],
       type: 'month',
       types: ['month', 'week', 'day', '4day'],
@@ -314,7 +315,12 @@ export default Vue.extend({
       }
       this.idNuevoEvento = ''
       this.dialog=false
-    }
+    },
+    viewDay ({ date }: {date: any}) {
+      this.focus = date
+      this.type = 'day'
+      this.tipo = 'Diario'
+    },
   }
 })
 </script>
